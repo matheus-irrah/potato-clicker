@@ -15,11 +15,11 @@
 ## 3. User interface
 
 - [x] 3.1 Implement `src/ui/render.js` and `src/main.js`: potato with click feedback, bank/PPS/stats, shop with reveal and disabled states, upgrades list, Golden Potato, Frenzy timer, toasts; verify by loading the page in a browser and clicking through a purchase
-- [x] 3.2 Wire autosave (10 s + `visibilitychange`/`beforeunload`), load with offline-earnings message, export/import dialogs and confirmed reset; verify by reloading the page and seeing progress kept and the away message
+- [x] 3.2 Wire autosave (10 s + `visibilitychange`/`pagehide`), load with offline-earnings message, export/import dialogs and confirmed reset; verify by reloading the page and seeing progress kept and the away message
 - [x] 3.3 Style `styles.css` (two-column → one-column under 760 px, SVG potato, animations); verify the layout at phone width has no horizontal scroll
 
 ## 4. Delivery
 
-- [ ] 4.1 Add `.github/workflows/ci.yml` (run `npm test` on push/PR) and `.github/workflows/pages.yml` (deploy repo root to GitHub Pages); verify both workflows succeed on GitHub
+- [x] 4.1 Add `.github/workflows/ci.yml` (run `npm test` on push/PR) and `.github/workflows/pages.yml` (deploy repo root to GitHub Pages); verify both workflows succeed on GitHub
 - [x] 4.2 Write `README.md` (how to play, run locally, run tests, SDD workflow with OpenSpec); verify the documented commands run as written
-- [ ] 4.3 Integration check: open the deployed Pages URL and play from a new game through buying a producer and an upgrade
+- [x] 4.3 Integration check: open the deployed Pages URL and play from a new game through buying a producer and an upgrade
