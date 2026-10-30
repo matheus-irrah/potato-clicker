@@ -21,7 +21,7 @@ On start the game SHALL load the saved state if present. If no save exists, or t
 - **THEN** the game starts as a new game
 
 ### Requirement: Offline earnings
-When loading a save, the game SHALL credit `PPS × secondsAway × 0.5`, with secondsAway capped at 8 hours, and SHALL tell the player how much was earned while away when the amount is greater than zero.
+When loading a save, the game SHALL credit `PPS × secondsAway × 0.5`, with secondsAway capped at 8 hours, and SHALL tell the player how much was earned while away when the amount is at least 1 potato.
 
 #### Scenario: Away for one hour
 - **WHEN** the saved PPS is 10 and the player returns 3,600 seconds later

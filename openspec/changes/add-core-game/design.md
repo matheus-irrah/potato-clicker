@@ -49,7 +49,7 @@ Rules mutate the passed state and return a result (`true/false` for purchases) s
 
 ### Game loop
 
-`requestAnimationFrame` drives rendering; a `tick(state, dtSeconds, now)` call per frame adds `PPS × dt`. dt is clamped to 1 second per frame so a background tab returning doesn't double-count with offline earnings (hidden tabs save on `visibilitychange`; on return the loop resumes and the clamp keeps the jump small). Rendering uses keyed DOM nodes created once and updated in place, to avoid rebuilding the shop 60 times per second.
+`requestAnimationFrame` drives rendering; a `tick(state, dtSeconds, now)` call per frame adds `PPS × dt`. Browsers pause rAF in hidden tabs, so dt is not clamped: when a tab becomes visible again, the whole gap is credited at full rate, which keeps production running while the game is open. This doesn't double-count with offline earnings, because offline earnings are only applied on page load, using the save time written when the page was hidden or closed. Rendering uses keyed DOM nodes created once and updated in place, to avoid rebuilding the shop 60 times per second.
 
 ### Upgrade definitions
 
@@ -67,7 +67,7 @@ The potato and Golden Potato are inline SVG (no image assets). Click feedback us
 
 - [Float drift in long sessions] → Irrelevant at display precision; bank is floored only for display.
 - [Clearing browser data wipes progress] → Export/import provides a manual backup.
-- [rAF stops in background tabs, so no production while hidden] → Offline earnings on next load, and the clamp keeps resumed tabs honest. Accepted: hidden-tab play earns at the offline rate only after reload.
+- [A Frenzy that ends while the tab is hidden] → The returning frame is credited at the current (non-Frenzy) rate, slightly under-crediting. Accepted.
 
 ## Migration Plan
 

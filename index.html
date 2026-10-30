@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Potato Clicker</title>
+  <meta name="description" content="An incremental game about harvesting an absurd number of potatoes.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥔</text></svg>">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="src/main.js"></script>
+</head>
+<body>
+  <header class="top">
+    <h1>Potato Clicker</h1>
+  </header>
+
+  <main class="layout">
+    <section class="field" aria-label="Potato field">
+      <div class="bank" aria-live="off">
+        <div id="bank" class="bank-amount">0</div>
+        <div class="bank-label">potatoes</div>
+        <div class="pps">per second: <span id="pps">0</span></div>
+      </div>
+
+      <div id="frenzy" class="frenzy" hidden></div>
+
+      <button id="potato" class="potato" type="button" aria-label="Harvest a potato"></button>
+
+      <dl class="stats">
+        <div><dt>Harvested all time</dt><dd id="stat-total">0</dd></div>
+        <div><dt>Potato clicks</dt><dd id="stat-clicks">0</dd></div>
+        <div><dt>Per click</dt><dd id="stat-ppc">1</dd></div>
+      </dl>
+    </section>
+
+    <aside class="store" aria-label="Store">
+      <h2>Upgrades</h2>
+      <div id="upgrades" class="upgrades"></div>
+      <p id="no-upgrades" class="muted">Keep harvesting to unlock upgrades.</p>
+
+      <h2>Farm</h2>
+      <div id="shop" class="shop"></div>
+    </aside>
+  </main>
+
+  <footer class="bottom">
+    <button id="export-btn" type="button" class="ghost">Export save</button>
+    <button id="import-btn" type="button" class="ghost">Import save</button>
+    <button id="reset-btn" type="button" class="ghost danger">Reset</button>
+  </footer>
+
+  <button id="golden" class="golden" type="button" aria-label="Golden potato! Click it" hidden></button>
+  <div id="floaters" aria-hidden="true"></div>
+  <div id="toasts" class="toasts" role="status" aria-live="polite"></div>
+
+  <dialog id="save-dialog" class="save-dialog">
+    <form method="dialog">
+      <h2 id="save-dialog-title">Save</h2>
+      <p id="save-dialog-hint" class="muted"></p>
+      <textarea id="save-text" rows="6" spellcheck="false" aria-labelledby="save-dialog-title"></textarea>
+      <p id="save-error" class="error" hidden></p>
+      <div class="dialog-actions">
+        <button id="save-copy" type="button">Copy</button>
+        <button id="save-load" type="button">Load save</button>
+        <button value="close" class="ghost">Close</button>
+      </div>
+    </form>
+  </dialog>
+</body>
+</html>
